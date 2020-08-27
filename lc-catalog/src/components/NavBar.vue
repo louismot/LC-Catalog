@@ -6,17 +6,38 @@
         Students
       </a>
     </div>
-    <div class="menu-item">
-      <a href="#">
+    <div class="menu-item" >
+      <a href="#" @click="isTeacher">
         Teacher
       </a>
+      <div class="modal" id="prompt">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <input class="input" type="text" placeholder="Enter Password">
+          <!-- Any other Bulma elements you want -->
+        </div>
+        <button class="modal-close is-large" aria-label="close" @click="isTeacher"></button>
+      </div>
     </div>
+
   </nav>
 </template>
 
 <script>
+
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  data(){
+    return{
+    teacher: 0
+    }
+  },
+  methods:{
+    isTeacher(){
+      document.getElementById("prompt").classList.toggle("is-active");
+
+    }
+  }
 }
 </script>
 
@@ -37,6 +58,7 @@ nav .menu-item {
 }
 
 nav .menu-item.active,
+nav .modal.active,
 nav .menu-item:hover{
   background-color: darkviolet;
   border-bottom-color: yellow;
